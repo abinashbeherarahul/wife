@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>which type of wife you want</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .toggle-label {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Toggle switch styling */
+        .switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background-color: #ccc;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .switch::before {
+            content: '';
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            background-color: #fff;
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+            transition: transform 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide the checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Checked state for the switch */
+        input[type="checkbox"]:checked + .switch {
+            background-color: #4CAF50;
+        }
+
+        /* Move the slider circle when checked */
+        input[type="checkbox"]:checked + .switch::before {
+            transform: translateX(25px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>which type of wife you want</h2>
+        
+        <div class="toggle-container">
+            <input type="checkbox" id="option1" onclick="handleSelection(this)">
+            <label class="switch" for="option1"></label>
+            <label class="toggle-label" for="option1">Beautiful & sexy</label>
+        </div>
+        
+        <div class="toggle-container">
+            <input type="checkbox" id="option2" onclick="handleSelection(this)">
+            <label class="switch" for="option2"></label>
+            <label class="toggle-label" for="option2">Dahej wali</label>
+        </div>
+        
+        <div class="toggle-container">
+            <input type="checkbox" id="option3" onclick="handleSelection(this)">
+            <label class="switch" for="option3"></label>
+            <label class="toggle-label" for="option3">seal packed</label>
+        </div>
+    </div>
+
+    <script>
+        // Array to keep track of selected checkboxes
+        let selectedOptions = [];
+
+        function handleSelection(checkbox) {
+            if (checkbox.checked) {
+                // Add checkbox to selectedOptions array
+                selectedOptions.push(checkbox);
+
+                // If more than 2 options are selected, deselect the oldest one
+                if (selectedOptions.length > 2) {
+                    const oldestSelected = selectedOptions.shift();
+                    oldestSelected.checked = false;
+                }
+            } else {
+                // Remove checkbox from selectedOptions array if unchecked
+                selectedOptions = selectedOptions.filter(option => option !== checkbox);
+            }
+        }
+    </script>
+</body>
+</html>
